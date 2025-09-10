@@ -6,14 +6,13 @@ It explores market share, model-level sales, estimated revenue, pricing comparis
 The project demonstrates skills in data wrangling, proactive research of missing MSRP data,
 and business-focused visualization.  Methods used are:
 - R [See R codes](/R)
-- Python [See python codes and dashboard](/Python)
-- Excel [See excel snapshots](/Excel)
-- Tableau [See Tableau report](Tableau Public link - to follow)
-- Power BI [See Power BI report](/PowerBI)
+- Python [See python codes and dashboard](/Python)  - to follow
+- Excel [See excel snapshots](/Excel) - to follow
+- Tableau [See Tableau report](Tableau Public link) - to follow
+- Power BI [See Power BI report](/PowerBI)  - to follow
 
 ## Key Challenge
-The source dataset lacked price data for 99% of the rows: a major challenge.
-(https://catalog.data.gov/dataset/electric-vehicle-population-data). 
+The [source dataset](https://catalog.data.gov/dataset/electric-vehicle-population-data) lacked price data for 99% of the rows: a major challenge.
 To solve this, I conducted manual and batch research to enrich the dataset with accurate MSRP values by make and model. 
 This step resulted in more realistic revenue estimation and competitive analysis.
 
