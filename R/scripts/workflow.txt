@@ -44,5 +44,6 @@
                                 ┌───────────────────────┐                                                                  
                                 │    Create dashboard   │                                                                  
                                 │                       │                                                                  
-                                │    End of Flowchar    │                                                                  
+                                │    End of Flowchart   │                                                                  
+
                                 └───────────────────────┘
