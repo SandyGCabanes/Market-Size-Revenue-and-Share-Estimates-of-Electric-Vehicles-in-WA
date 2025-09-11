@@ -26,3 +26,6 @@ This step resulted in more realistic revenue estimation and competitive analysis
 
 This project showcases reproducible analysis and clear communication of business-relevant 
 metrics—skills essential for data analyst roles.
+
+### R dashboard using flexdashboard
+![R dashboard](R/dashboard_charts/Tesla_presentation.gif)
