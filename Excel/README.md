@@ -3,7 +3,14 @@
 
 ## ![Excel dashboard](excel_dashboard.gif)
 
-To explore the market size using the counts from this [website](https://catalog.data.gov/datasets/lectroc-vehicle-population-data). Since a lot of the price information and electric range information are missing, I researched the prices and electric ranges beyond the dataset provided.
+## Objective: This dashboard addresses the following business questions using data from this [website](https://catalog.data.gov/datasets/lectroc-vehicle-population-data). 
+- What is Tesla's market share in WA compared to other brands?
+- Which Tesla models are most popular, and what is the estimated revenue impact?
+- How do Tesla's vehicle prices and ranges compare to competitors?
+- How are PHEV (hybrids) and BEVs trending?
+- Which utilites are most commonly associated with Tesla vehicle registrations?
+
+## Key challenge:  Since a lot of the price information and electric range information are missing, I researched the prices and electric ranges beyond the dataset provided.
 
 ## Excel workflow
 For the msrp charts, I linked the original dataset with the researched price data using xlookup.
