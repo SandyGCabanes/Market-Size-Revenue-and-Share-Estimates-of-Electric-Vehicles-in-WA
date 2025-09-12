@@ -29,3 +29,6 @@ metrics—skills essential for data analyst roles.
 
 ### R dashboard using flexdashboard
 ![R dashboard](R/dashboard_charts/Tesla_presentation.gif)
+
+### Excel dashboard using pivot charts
+![Excel dashboard](Excel/excel_dashboard.gif)
