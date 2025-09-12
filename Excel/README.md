@@ -1,6 +1,8 @@
 # Market Size, Share and Revenue Estimates of Electric Vehicles in WA - Focus on Tesla
 ##  Uses Real World data  (235K+ rows of data)
 
+## ![Excel dashboard](excel_dashboard.gif)
+
 To explore the market size using the counts from this [website](https://catalog.data.gov/datasets/lectroc-vehicle-population-data). Since a lot of the price information and electric range information are missing, I researched the prices and electric ranges beyond the dataset provided.
 
 ## Excel workflow
@@ -15,7 +17,5 @@ Using the added data, I then created this dashboard, using excel pivot tables an
 - Tesla is also in mid to upper range in terms of electric range in miles within BEV.
 - BEV continues to outpace hybrids. The spike in 2023 is due to the tax incentives.
 - The partnership with Puget Sound utilties is evident in the associated utilities with Tesla cars.
-
-## ![Excel dashboard](excel_dashboard.gif)
 
 
