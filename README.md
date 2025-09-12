@@ -7,7 +7,7 @@ The project demonstrates skills in data wrangling, proactive research of missing
 and business-focused visualization.  Methods used are:
 - R [See R codes](/R)
 - Python [See python codes and dashboard](/Python)  - to follow
-- Excel [See excel snapshots](/Excel) - to follow
+- Excel [Excel Readme](/Excel)
 - Tableau [See Tableau report](Tableau Public link) - to follow
 - Power BI [See Power BI report](/PowerBI)  - to follow
 
