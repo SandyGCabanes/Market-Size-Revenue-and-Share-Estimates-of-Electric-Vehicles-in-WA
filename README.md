@@ -14,7 +14,8 @@ and business-focused visualization.  Each of these methods produced similar dash
 ## Key Challenge
 The [source dataset](https://catalog.data.gov/dataset/electric-vehicle-population-data) lacked price data for 99% of the rows: a major challenge.
 To solve this, I conducted manual and batch research to enrich the dataset with accurate MSRP values by make and model. 
-This step resulted in more realistic revenue estimation and competitive analysis.
+The dataset also lacked important electric range data needed for answering a key business question below.   
+These two research steps resulted in more realistic competitive pricing and range analysis.
 
 ## Key Business Questions Addressed:
 
