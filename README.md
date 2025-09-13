@@ -3,8 +3,8 @@
 ## What This is About:
 This analyzes Tesla’s performance in Washington State’s electric vehicle market using real-world registration data. 
 It explores market share, model-level sales, estimated revenue, pricing comparisons, and utility partnerships. 
-The project demonstrates skills in data wrangling, proactive research of missing MSRP data, research of missing Electric.Range data,
-and business-focused visualization.  Each of these methods produced the similar dashboards.  Each link has a sample dashboard from that method.
+The project showcases data wrangling, proactive research of missing MSRP data, proactive research of missing Electric.Range data,
+and business-focused visualization.  Each of these methods produced similar dashboards.
 - R [See R codes](/R)
 - Python [See python codes and dashboard](/Python)  - to follow
 - Excel [Excel Readme](/Excel)
