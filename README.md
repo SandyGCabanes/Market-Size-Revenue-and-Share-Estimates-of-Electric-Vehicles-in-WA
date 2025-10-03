@@ -1,5 +1,5 @@
 # Market Size, Revenue and Share Estimates of Electric Vehicles in WA (Real World Data)
-
+## This repo features Python, R, Excel, Power BI and Tableau to solve the same business questions.
 ## What This is About:
 This analyzes Tesla’s performance in Washington State’s electric vehicle market using real-world registration data. 
 It explores market share, model-level sales, estimated revenue, pricing comparisons, and utility partnerships. 
@@ -33,3 +33,6 @@ metrics—skills essential for data analyst roles.
 
 ### Excel dashboard using pivot charts
 ![Excel dashboard](Excel/excel_dashboard.gif)
+
+### Python dashboard using plotly
+![Python dashboard](Python/output_5000ms.gif)
