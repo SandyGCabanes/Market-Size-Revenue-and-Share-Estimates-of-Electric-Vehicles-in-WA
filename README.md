@@ -6,7 +6,7 @@ It explores market share, model-level sales, estimated revenue, pricing comparis
 The project showcases data wrangling, proactive research of missing MSRP data, proactive research of missing Electric.Range data,
 and business-focused visualization.  Each of these methods produced similar dashboards.
 - R [See R codes and dashboard](/R)  - for those interested in transparent reproducible workflows 
-- Python [See python codes and dashboard](/Python)  - to follow
+- Python [See python codes and dashboard](/Python) 
 - Excel [Excel dashboard](/Excel) - for those interested in familiar tools and quick shareable dashboards
 - Tableau [See Tableau report](Tableau Public link) - to follow 
 - Power BI [See Power BI report](/PowerBI)  - to follow 
