@@ -34,6 +34,7 @@ This project showcases advanced analysis aside from the usual exploratory method
 ![R dashboard](R/dashboard_charts/Tesla_presentation.gif)
 
 ### Excel dashboard using pivot charts
+#### The excel forecast used native forecast.ets function, resulting in slightly higher figures.
 ![Excel dashboard](Excel/excel_dashboard.gif)
 
 ### Python dashboard using plotly
