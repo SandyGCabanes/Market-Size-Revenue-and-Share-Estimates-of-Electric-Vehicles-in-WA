@@ -29,13 +29,16 @@ The dataset also lacked important electric range data needed for comparing range
 
 This project showcases advanced analysis aside from the usual exploratory methods.  I added the sales projections using ARIMA and tempered the spike in 2023 to eliminate the one-time anomaly.  
 
+---
 
 ### R dashboard using flexdashboard
 ![R dashboard](R/dashboard_charts/Tesla_presentation.gif)
 
+---
 ### Excel dashboard using pivot charts
 #### The excel forecast used native forecast.ets function, resulting in slightly higher figures.
 ![Excel dashboard](Excel/excel_dashboard.gif)
 
+---
 ### Python dashboard using plotly
 ![Python dashboard](Python/output_5000ms.gif)
