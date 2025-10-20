@@ -25,7 +25,7 @@ The dataset also lacked important electric range data needed for comparing range
 - How are PHEV and BEV trending?
 - Which utilities are most commonly associated with Tesla EV registrations?
 - What is the 2025 sales outlook for Tesla assuming previous Tesla trends?
-- What is the 2025 sales outlook for Tesla assuming 
+
 
 This project showcases advanced analysis aside from the usual exploratory methods.  I added the sales projections using ARIMA and tempered the spike in 2023 to eliminate the one-time anomaly.  
 
