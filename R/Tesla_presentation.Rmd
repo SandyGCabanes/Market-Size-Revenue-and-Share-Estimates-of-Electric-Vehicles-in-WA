@@ -11,39 +11,41 @@ output:
 ### Executive Summary
 
 ```         
-This dashboard analyzes Tesla’s performance in Washington State’s electric vehicle market using real-world registration data. 
-It explores market share, model-level sales, estimated revenue, pricing comparisons, and utility partnerships. 
-The project demonstrates skills in data wrangling, proactive research of missing MSRP data,
-and business-focused visualization using R and Flexdashboard.
+This dashboard analyzes Tesla’s performance in Washington State’s electric vehicle market
+using real-world registration data and researched MSRP values plus researched electric range values.
 
-A major challenge was the absence of MSRP values for 99% of the vehicle records in the source dataset 
+This was because 99% of the price and range values for the Washington dataset were missing.
 (https://catalog.data.gov/dataset/electric-vehicle-population-data). 
-To address this, I conducted manual and batch research to enrich the dataset with accurate MSRP values by make and model. 
-This step resulted in more realistic revenue estimation and competitive analysis.
+To address this, I conducted manual and batch research to enrich the dataset 
+with accurate MSRP values and range values.  
+This made the analysis more valid vs. just filtering out the 1% of data that were available. 
+This proactive effort step resulted in more realistic revenue estimation and competitive analysis.
 
 **Key questions addressed:**
 
 - What is Tesla’s market share in WA compared to other EV brands?
+- How is Tesla's market share trending over time?
 - Which Tesla models are most popular, and what is their estimated revenue impact?
+- How is Tesla's revenue trending over time?
 - How do Tesla’s vehicle ranges and prices compare to competitors?
 - How are PHEV and BEV trending?
 - Which utilities are most commonly associated with Tesla EV registrations?
 
-This project showcases reproducible analysis and clear communication of business-relevant 
-metrics—skills essential for data analyst roles.
+This project moves beyond the core descriptive metrics and gives deeper insights
+about the market.
+
+
 ```
+
 
 ### Electric Vehicles All Time Market Share in WA (By Number of Cars Registered)
 
 ```{r Market Share Donut Chart}
-
-
 library(dplyr)
 library(tidyr)
 library(ggplot2)
 library(readr)
 library(scales)
-
 
 dfcln <- read.csv("C:/Users/sandy/zportfolio_projects_128gbsdcard/2025_grouped/electric_vehicles/data_csv_files/df.csv")
 
@@ -72,13 +74,43 @@ donut_chart <- ggplot(dfmarket, aes(x = x, y = Market_Share, fill = Group)) +
   coord_polar(theta = "y") +
   xlim(c(0.2, holesize +0.5 )) +
   theme_void() +
-  labs(title = "Electric Vehicles All Time Market Share in WA")+
+  labs(title = "Tesla In A Good Position with 43% Market Share in WA",
+  subtitle = "Count of Electric Vehicles in WA - All Time")+
   geom_text(aes(label = paste0(Market_Share, "%")), position = position_stack(vjust = 0.5)) +
   scale_fill_manual(values = c("Tesla" = "#E82127", "Other" = "#999999"))
 
 donut_chart
 
+ggsave("1.donut_chart.png", donut_chart, bg = "white")
+
+
 ```
+
+### Stacked bar plot of market share by year
+
+```{r Stacked bar Market shares}
+# Create new df_shr_yrs, Tesla vs. Others
+df_shr_yrs <- dfwa %>%
+  group_by(Model.Year, Tesla.Vs.Others) %>%
+  summarize(count=n(), 
+  .groups = "drop") %>%
+  arrange(Model.Year)
+
+barchart_marketshares_year <- ggplot(
+  df_shr_yrs %>% filter(Model.Year > 2010),
+  aes(x = Model.Year, y = count, fill = Tesla.Vs.Others)) +
+  geom_col() +
+  scale_fill_manual(values = c("TESLA" = "#E82127", "OTHERS" = "#999999")) +
+  labs(title = "Tesla Maintaining Shares Especially Past 3 Years", x = NULL, y = "Count of Registered Vehicles") +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank()
+  )
+barchart_marketshares_year
+ggsave("2. barchart_marketshares.png", barchart_marketshares_year, bg = "white")
+
+```
+
 
 ### Top Tesla Models Sold - All Time
 
@@ -89,10 +121,14 @@ teslatop <- tesladf %>% group_by(Make, Model) %>% summarize(count = n(), .groups
 barchart_topmodels <- ggplot(teslatop, aes(x=reorder(Model, count), y = count)) +
   geom_col(fill = "#E82127") +
   coord_flip() +
-  labs(title = "Tesla Models Sold - All Time", x = NULL) +
+  labs(title = "Model Y and Model 3 Dominate",
+  subtitle = "Tesla Models Sold - All Time", 
+  x = NULL) +
   theme_minimal()
+
 barchart_topmodels
 
+ggsave("3.barchart_topmodels.png", barchart_topmodels, bg = "white")
 ```
 
 ### Top Tesla Models Estimated Revenue (All Time)
@@ -122,11 +158,15 @@ teslatopwprice <- teslatopwprice %>%
 barchart_topmodels_avgrevenues <- ggplot(teslatopwprice, aes(x=reorder(Model, AvgRevenue), y = AvgRevenue)) +
   geom_col(fill = "#999999") +
   coord_flip() +
-  labs(title = "Top Tesla Models Estimated Revenues - All Time", x = NULL, y = NULL) +
+  labs(title = "Top Tesla Models (Counts) Reflect All Time Revenues", x = NULL, y = NULL) +
   scale_y_continuous(labels = label_comma()) +
-  theme_minimal()
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank()
+  )
 barchart_topmodels_avgrevenues
 
+ggsave("4.barchart_topmodels_avgrevenues.png", barchart_topmodels_avgrevenues, bg = "white")
 ```
 
 ### Tesla Electric Vehicles Sold By Year (As of mid July 2025)
@@ -142,11 +182,108 @@ df_tesla_sold_by_year <- dfwa %>%
 linechart_tesla_by_year <- ggplot(df_tesla_sold_by_year, aes(x = Model.Year, y = Count)) +
   geom_line(color = "#999999", size = 1) +
   geom_point(color = "#E82127", size = 2) +
-  labs(title = "Tesla Electric Vehicles Sold By Year\n As of mid July 2025\n 2023 spike due to new tax credits in Jan 2023", y = NULL) +
-  theme_minimal()
+  labs(title = "2023 Unusual Spike in Tesla Vehicles Sold By Year",
+  subtitle = "Due to New Tax credits in 2023", y = NULL) +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank()
+  )
 linechart_tesla_by_year
 
+ggsave("5.linechart_tesla_by_year.png", linechart_tesla_by_year, bg = "white")
+
 ```
+
+### Tesla Vehicle Forecast for 2025 (As of midJuly 2025)
+
+```{r ARIMA forecast for Tesla linechart}
+
+
+library(conflicted)
+conflicts_prefer(dplyr::filter)
+
+
+dfcln <- read.csv("dfcln.csv")
+dfwa <- dfcln %>% filter(State == "WA")
+dfwa <- dfwa %>% mutate(Tesla.Vs.Others = case_when(
+  Make == "TESLA" ~ "TESLA",
+  TRUE ~ "OTHERS")
+)
+write.csv(dfwa, "dfwa.csv") 
+
+
+df_tesla_sold_by_year <- dfwa %>%
+  filter(Tesla.Vs.Others == "TESLA") %>%
+  group_by(Model.Year) %>%
+  summarise(Count = n()) %>%
+  arrange(Model.Year)
+write.csv(df_tesla_sold_by_year, "df_tesla_sold_by_year.csv")
+
+
+newvalue2023 = mean(df_tesla_sold_by_year$Count[df_tesla_sold_by_year$Model.Year %in% c(2022, 2024)])
+df_tesla_tempered <- df_tesla_sold_by_year %>%
+  mutate(Count = ifelse(Model.Year == 2023, newvalue2023, Count)) %>%
+  filter(Model.Year >= 2010) %>%
+  filter(Model.Year != 2025)
+write.csv(df_tesla_tempered, "df_tesla_tempered.csv")
+
+
+
+library(forecast)
+library(scales) 
+
+
+ts_tesla <- ts(df_tesla_tempered$Count,
+               start = min(df_tesla_tempered$Model.Year),
+               frequency = 1)
+
+
+fit_tesla <- auto.arima(ts_tesla)
+
+
+forecast_arima <- forecast(fit_tesla, h = 1)
+save(forecast_arima, file = "forecast_arima.Rdata")
+
+
+
+
+point_2025 <- round(forecast_arima$mean[1], 0)
+lo95_2025  <- round(forecast_arima$lower[1, 2], 0)  
+hi95_2025  <- round(forecast_arima$upper[1, 2], 0) 
+
+
+
+linechart_tesla_by_year_forecast <- autoplot(forecast_arima) +
+  geom_point(aes(x = 2025, y = forecast_arima$mean[1]),
+             color = "red", size = 3) +
+  geom_text(aes(x = 2025, y = forecast_arima$mean[1],
+                label = paste0("2025: ", round(forecast_arima$mean[1], 0))),
+            vjust = -1, color = "red", size = 4) +
+  scale_x_continuous(breaks = seq(2010, 2025, 1)) +  
+  scale_y_continuous(labels = comma) +               
+  labs(
+  title = "Tesla Forecast For 2025 is 18k+ vs. 17k+ in 2024",
+  subtitle = "2023 Spike Is Tempered. Based On Yearly Trends\nAssuming No Surge After June Or Major Policy Changes",
+  x = "Model Year",
+  y = "Tesla"
+) +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0),
+    plot.subtitle = element_text(hjust = 0),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    panel.grid.major = element_blank(),  
+    panel.grid.minor = element_blank(),  
+    panel.border = element_blank(),      
+    axis.ticks = element_line(color = "black")  
+  )
+
+linechart_tesla_by_year_forecast
+
+ggsave("6.forecast_tesla.png", linechart_tesla_by_year_forecast, bg = "white")
+
+```
+
 
 ### Average Prices for Battery Electric Vehicles
 
@@ -175,9 +312,61 @@ dfteslavothers <- dfclnfil %>% group_by(Tesla.Vs.Others) %>%
 barchart_msrps <- ggplot(dfteslavothers, aes(x = Tesla.Vs.Others, y = AvgMSRP, fill = Tesla.Vs.Others)) +
   geom_col() +
   scale_fill_manual(values = c("TESLA" = "#E82127", "OTHERS" = "#999999")) +
-  labs(title = "Average Prices for Battery Electric Vehicles", x = NULL, y = "Average Prices USD") +
-  theme_minimal()
+  labs(title = "Average of Prices for Tesla Models Seems Only Slightly Higher ",
+  subtitle = "Vs. Other Battery Vehicles, Researched Prices Used Beyond Dataset", 
+  x = NULL, y = "Average Prices USD") +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank()
+  )
 barchart_msrps
+
+ggsave("7. barchart_msrps.png", barchart_msrps, bg = "white")
+```
+
+
+### Under $100K Segment - Prices By Manufacturer
+
+
+```{r Non-luxury prices}
+
+msrp_csv <- read.csv("C:/Users/sandy/zportfolio_projects_128gbsdcard/2025_grouped/electric_vehicles/data_csv_files/msrp_csv.csv")
+
+msrp_nonlux <- msrp_csv %>% filter(AvgMSRP < 100000)
+write.csv(msrp_nonlux, "msrp_nonlux.csv")
+
+
+
+all_makes <- unique(msrp_nonlux$Make)
+
+my_colors <- ifelse(all_makes == "TESLA", "#E82127", "#999999")
+names(my_colors) <- all_makes
+
+
+ 
+boxplot_msrp_nonlux <- ggplot(msrp_nonlux, aes(x = reorder(Make, AvgMSRP, FUN = median), y = AvgMSRP)) +
+  geom_boxplot(aes(fill = Make), outlier.shape = 20, colour = "lightgrey") + 
+  coord_flip() + 
+  scale_fill_manual(values = my_colors) + 
+  scale_y_continuous(labels = scales::dollar_format()) + 
+  labs(
+    title = "Deep Dive Shows Tesla Models Have Higher Average Prices",
+    subtitle = "Based On Researched Prices Beyond Dataset\nWithin the Under $100k Segment",
+    y = "Average MSRP (USD)",
+    x = "Car Make"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 14),
+    axis.text.y = element_text(size = 9),
+    axis.text.x = element_text(size = 9),
+    legend.position = "none",
+    panel.grid = element_blank()
+  )
+
+boxplot_msrp_nonlux
+ggsave("8. boxplot_msrp_nonluxury.png", boxplot_msrp_nonlux, bg = "white")
+
 ```
 
 ### Average Ranges for Battery Electric Vehicles
@@ -194,10 +383,56 @@ write.csv(dfevsranges, "tesla_others_ranges.csv")
 barchart_ranges <- ggplot(dfevsranges, aes(x = Tesla.Vs.Others, y = AvgRange, fill = Tesla.Vs.Others)) +
   geom_col() +
   scale_fill_manual(values = c("TESLA" = "#E82127", "OTHERS" = "#999999")) +
-  labs(title = "Tesla Higher Average Range vs. Others for Battery Electric Vehicles", x = NULL, y = "Average Range (miles)") +
-  theme_minimal()
+  labs(title = "Tesla Has About 100 Miles Higher Range vs. Others",
+  subtitle = "Among Battery Electric Vehicles", 
+  x = NULL, 
+  y = "Average Range (miles)") +
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank()
+  )
+
 barchart_ranges
+ggsave("9. barchart_ranges.png", barchart_ranges, bg = "white")
+
 ```
+
+### Battery Electric Vehicle Segment Ranges
+```{r Boxplot of Ranges}
+
+dfbev_boxplot<- read.csv("C:/Users/sandy/zportfolio_projects_128gbsdcard/2025_grouped/electric_vehicles/data_csv_files/dfbev_joined_for_boxplot.csv", strip.white = TRUE)
+
+
+all_makes <- unique(dfbev_boxplot$Make)
+
+my_colors <- ifelse(all_makes == "TESLA", "#E82127", "#999999")
+names(my_colors) <- all_makes
+
+boxplot_ranges <- ggplot(dfbev_boxplot, aes(x = reorder(Make, Electric.Range, FUN = median), y = Electric.Range)) +
+  geom_boxplot(aes(fill = Make), outlier.colour = "red", outlier.shape = 20, colour = "lightgrey") +
+  coord_flip() + 
+  scale_fill_manual(values = my_colors) + 
+  labs(
+    title = "Deep Dive Shows Tesla Models Have Higher Range",
+    subtitle = "Average Electric Range in Miles by Make",
+    y = "Average Electric Range (Miles)",
+    x = "Car Make"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.title = element_text(size = 14),
+    axis.text.y = element_text(size = 9),
+    axis.text.x = element_text(size = 9),
+    legend.position = "none",
+    panel.grid = element_blank()
+  )
+boxplot_ranges
+ggsave("10. boxplot_ranges.png", boxplot_ranges, bg = "white")
+
+
+```
+
+
 
 ### PHEV vs. BEV Trends By Year
 
@@ -211,10 +446,16 @@ write.csv(df_evtrends, "trends_ev.csv")
 linechart_evtrends <- ggplot(df_evtrends, aes(x = Model.Year, y = Count, color = Electric.Vehicle.Type)) +
   geom_line(size = 1) +
   geom_point(size = 2) +
-  labs(title = "PHEV vs. BEV Trends By Year\nBEV Boost Widens Gap vs. PHEV") +
+  labs(title = "BEV (Battery) Boost Widens Gap vs. PHEV (Plug-in Hybrid)",
+  subtitle = "2018: Battery Starts to Widen Gap") +
   scale_color_manual(values = c("Battery Electric Vehicle (BEV)" = "#E82127", "Plug-in Hybrid Electric Vehicle (PHEV)" = "#999999")) +
-  theme_minimal()
+  theme_minimal() +
+  theme(
+    panel.grid = element_blank()
+  )
 linechart_evtrends
+
+ggsave("11.linechart_evtrends.png", linechart_evtrends, bg = "white")
 
 ```
 
@@ -236,16 +477,23 @@ dftesla_top5$Electric.Utility <- str_wrap(dftesla_top5$Electric.Utility, width =
 barchart_utilities <- ggplot(dftesla_top5, aes(x = reorder(Electric.Utility, Count), y = Count)) + 
   geom_col(fill = "#af2529") +
   coord_flip() +
-  labs(title = "Top 5 Utilities for Tesla\nPuget and Tesla Partnership Evident", x = NULL, y = "Tesla Count")+
+  labs(title = "Puget and Tesla Partnership Evident\nIn the Top 5 Utilities for Tesla", 
+       x = NULL, 
+       y = "Tesla Count")+
   theme_minimal() +
   theme(
     axis.text.y = element_text(size = 10),
     axis.text.x = element_text(size = 10),
-    plot.title = element_text(size = 14, face = "bold")
+    plot.title = element_text(size = 12),
+    panel.grid = element_blank()
   )
 barchart_utilities
+
+
+ggsave("12. barchart_top5_utilities.png", barchart_utilities, bg = "white")
+
 ```
 
 ### About This Project
 
-Built using R and Flexdashboard, this project demonstrates data wrangling, enrichment with MSRP reference data, and business-focused visualization. All code and data sources are documented for reproducibility.
+This dashboard was built in R using Flexdashboard. It walks through how raw registration data was cleaned, enriched with MSRP and electric range data based on research, and visualized with business impact in mind. Every step — from wrangling to final chart — is documented and reproducible.
