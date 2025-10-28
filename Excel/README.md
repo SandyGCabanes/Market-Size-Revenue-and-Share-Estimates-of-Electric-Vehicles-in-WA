@@ -3,13 +3,16 @@
 
 ## ![Excel dashboard](excel_dashboard.gif)
 
-## Objective: This dashboard addresses the following business questions using data from this [website](https://catalog.data.gov/datasets/lectroc-vehicle-population-data). 
-- What is Tesla's market share in WA compared to other brands?
-- Which Tesla models are most popular, and what is the estimated revenue impact?
-- How do Tesla's vehicle prices and ranges compare to competitors?
-- How are PHEV (hybrids) and BEVs trending?
-- Which utilites are most commonly associated with Tesla vehicle registrations?
-- What is the forecast for Tesla in 2025?
+## Strategic Objectives  
+This analysis addresses key business questions relevant to OEMs (Original Equipment Manufacturers), utilities, and policy stakeholders
+using data from this [website](https://catalog.data.gov/datasets/lectroc-vehicle-population-data). 
+- What is Tesla’s current market share in Washington’s EV landscape?
+- Which Tesla models drive the most registrations and estimated revenue?
+- How do Tesla’s vehicle ranges and prices compare to competitors?
+- What are the adoption trends for BEVs vs. PHEVs?
+- Which utilities are most frequently associated with Tesla registrations?
+- What is Tesla’s projected 2025 sales outlook based on historical trends?
+
 
 ## Key challenge:  Since a lot of the price information and electric range information are missing, I researched the prices and electric ranges beyond the dataset provided.
 
