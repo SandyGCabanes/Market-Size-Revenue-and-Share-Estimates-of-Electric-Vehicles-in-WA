@@ -1,33 +1,47 @@
-# Market Size, Share Estimates and Sales Forecast of Electric Vehicles in WA (Real World Data)
-## This repo features Python, R, Excel, Power BI and Tableau to solve the same business questions.
-## What This is About:
-This analyzes Tesla’s performance in Washington State’s electric vehicle market using real-world registration data. 
-It explores market share, model-level sales, estimated revenue, pricing comparisons, and utility partnerships. 
-The project showcases data wrangling, proactive research of missing MSRP data, proactive research of missing Electric.Range data,
-and business-focused visualization.  Each of these methods produced similar dashboards.
-- R [See R codes and dashboard](/R)  - for those interested in transparent reproducible workflows 
-- Python [See python codes and dashboard](/Python) 
-- Excel [Excel dashboard](/Excel) - for those interested in familiar tools and quick shareable dashboards
-- Tableau [See Tableau report](Tableau Public link) - under construction 
-- Power BI [See Power BI report](/PowerBI)  - under construction 
+# Market Share, Revenue Estimates, and Sales Forecasting for Electric Vehicles in Washington State  
+## Multi-Tool Business Intelligence Workflow (Python, R, Excel, Power BI, Tableau)
+
+### Overview  
+This project delivers a comprehensive business analysis of Tesla’s performance in Washington State’s electric vehicle (EV) market using real-world registration data. It supports strategic decision-making through market share diagnostics, model-level revenue estimates, competitive benchmarking, and sales forecasting.  
+
+The workflow is implemented across five platforms—Python, R, Excel, Power BI, and Tableau—to accommodate diverse stakeholder preferences and deployment environments. Each version produces consistent dashboards and insights, enabling cross-functional adoption.
+- R [See R codes and dashboard](/R)  Transparent, reproducible workflows using flexdashboar
+- Python [See python codes and dashboard](/Python) Interactive visualizations with Plotly 
+- Excel [Excel dashboard](/Excel) Familiar pivot-based interface for quick sharing
+- Tableau [See Tableau report](Tableau Public link) - Under construction 
+- Power BI [See Power BI report](/PowerBI)  - Under construction
 
 ## Key Advantages of This Analysis
 The [source dataset](https://catalog.data.gov/dataset/electric-vehicle-population-data) **lacked price data for 99% of the rows:** a major challenge.
 To solve this, **I conducted web research to enrich the dataset with accurate MSRP values by make and model.** 
 The dataset also lacked important electric range data needed for comparing ranges. This required extra research beyond what is given in the dataset so that I get a more realistic comparison of Tesla vs. others. 
 
+---
 
-## Business Questions Addressed:
+### Strategic Objectives  
+This analysis addresses key business questions relevant to OEMs, utilities, and policy stakeholders:
 
-- What is Tesla’s market share in WA compared to other EV brands?
-- Which Tesla models are most popular, and what is their estimated revenue impact?
+- What is Tesla’s current market share in Washington’s EV landscape?
+- Which Tesla models drive the most registrations and estimated revenue?
 - How do Tesla’s vehicle ranges and prices compare to competitors?
-- How are PHEV and BEV trending?
-- Which utilities are most commonly associated with Tesla EV registrations?
-- What is the 2025 sales outlook for Tesla assuming previous Tesla trends?
+- What are the adoption trends for BEVs vs. PHEVs?
+- Which utilities are most frequently associated with Tesla registrations?
+- What is Tesla’s projected 2025 sales outlook based on historical trends?
 
+---
 
-This project showcases advanced analysis aside from the usual exploratory methods.  I added the sales projections using ARIMA and tempered the spike in 2023 to eliminate the one-time anomaly.  
+### Data Enrichment and Methodology  
+The source dataset ([Electric Vehicle Population Data](https://catalog.data.gov/dataset/electric-vehicle-population-data)) lacked MSRP and electric range data for the majority of entries. To address this:
+
+- **MSRP values** were manually researched and mapped by make and model to enable revenue estimation.
+- **Electric range data** was supplemented using external sources to support realistic range comparisons.
+
+Sales projections were generated using ARIMA modeling, with adjustments to temper the 2023 spike and avoid overfitting to anomalous events.
+
+---
+
+### Visual Outputs  
+
 
 ---
 
