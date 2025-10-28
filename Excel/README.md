@@ -28,5 +28,5 @@ Using the added data, I then created this dashboard, using excel pivot tables an
 - Tesla is also in mid to upper range in terms of electric range in miles within BEV.
 - BEV continues to outpace hybrids. The spike in 2023 is due to the tax incentives.
 - The partnership with Puget Sound utilties is evident in the associated utilities with Tesla cars.
-- 2025 forecast for Tesla is around 20k compared to 17k in 2024. [exponential smoothing 'forecast.ets' function in excel](https://support.microsoft.com/en-us/office/forecast-ets-function-15389b8b-677e-4fbd-bd95-21d464333f41)  Since exponential smoothing gives rapidly decreasing attention to older data, the forecast is higher.
+- 2025 forecast for Tesla is around 20k compared to 17k in 2024. [exponential smoothing 'forecast.ets' function in excel](https://support.microsoft.com/en-us/office/forecast-ets-function-15389b8b-677e-4fbd-bd95-21d464333f41)  Since exponential smoothing gives rapidly decreasing attention to older data, the forecast is higher compared to ARIMA.
 
