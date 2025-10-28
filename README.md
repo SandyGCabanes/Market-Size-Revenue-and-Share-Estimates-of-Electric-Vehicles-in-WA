@@ -19,7 +19,7 @@ The dataset also lacked important electric range data needed for comparing range
 ---
 
 ### Strategic Objectives  
-This analysis addresses key business questions relevant to OEMs, utilities, and policy stakeholders:
+This analysis addresses key business questions relevant to OEMs (Original Equipment Manufacturers), utilities, and policy stakeholders:
 
 - What is Tesla’s current market share in Washington’s EV landscape?
 - Which Tesla models drive the most registrations and estimated revenue?
