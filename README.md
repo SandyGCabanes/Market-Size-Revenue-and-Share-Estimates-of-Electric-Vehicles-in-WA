@@ -4,7 +4,7 @@
 ### Executive Overview  
 This report evaluates the competitive position of electric vehicle manufacturers in Washington State, with a focus on Tesla’s market share, model‑level revenue potential, and near‑term sales outlook. The analysis uses the state’s EV registration data, enriched with independently researched MSRP and electric‑range values to correct for missing information in the source dataset.  
 
-The goal is to provide a clear view of where Tesla is gaining or losing ground, how its pricing and range compare to competitors, and what the 2025 sales trajectory is likely to look like based on historical adoption patterns.
+Objective is to provide a clear view of where Tesla is gaining or losing ground, how its pricing and range compare to competitors, and what the 2025 sales trajectory might look like based on historical adoption patterns.
 
 ---
 
